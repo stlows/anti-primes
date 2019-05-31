@@ -1,27 +1,3 @@
-function go() {
-  var number = document.getElementById("n").value;
-  document.body.removeChild(document.getElementById("result-list"));
-  document.body.appendChild(showList(generateAntiprimes(number)));
-}
-
-function showList(array) {
-  var list = document.createElement("ul");
-  list.id = "result-list";
-  for (var i = 0; i < array.length; i++) {
-    // Create the list item:
-    var item = document.createElement("li");
-
-    // Set its contents:
-    item.appendChild(document.createTextNode(array[i]));
-
-    // Add it to the list:
-    list.appendChild(item);
-  }
-
-  // Finally, return the constructed list:
-  return list;
-}
-
 function factors(n) {
   var factors = [];
   for (var i = 1; i <= n; i++) {
@@ -31,6 +7,7 @@ function factors(n) {
   }
   return factors;
 }
+
 function generateAntiprimes(n) {
   var antiprimes = [];
   var maxFactors = 0;
@@ -43,4 +20,20 @@ function generateAntiprimes(n) {
   }
   return antiprimes;
 }
-function isAntiprime(n) {}
+
+function go() {
+  var number = document.getElementById("n").value;
+  document.body.removeChild(document.getElementById("result-list"));
+  document.body.appendChild(showList(generateAntiprimes(number)));
+}
+
+function showList(array) {
+  var list = document.createElement("ul");
+  list.id = "result-list";
+  for (var i = 0; i < array.length; i++) {
+    var item = document.createElement("li");
+    item.appendChild(document.createTextNode(array[i]));
+    list.appendChild(item);
+  }
+  return list;
+}
